@@ -8,4 +8,4 @@ WORKDIR /app
 ENV PORT 3000
 ENV GEM_HOME /app/.gem
 ENV PATH $PATH:/app/.gem/bin
-CMD bundle install --without unicorn && ruby helloworld.rb
+CMD bundle install --without unicorn && ruby helloworld.rb -o 0.0.0.0

@@ -20,9 +20,11 @@ curl localhost:3000
 ```
 This setup is suitable for running on developers machines. The application directory is volume-mounted inside a docker instance. This allows to work on the code without rebuilding the image.
 
-Alpine Linux is used as a base image, with a minimal list of packages deployed. There are no other docker security measures implemented in this option.
+Notes:
+- Alpine Linux is used as a base image, with a minimal list of packages deployed. There are no other docker security measures implemented in this option.
+- Group 'unicorn' is added to the Gemfile - therefore the same Gemfile can be used for this example (with 'bundle install --without unicorn') and the one below.
+- Gemfile.lock is currently in .gitignore.
 
-Gemfile.lock is currently in .gitignore.
 
 ### All-in-one deployment with Docker
 
@@ -46,7 +48,7 @@ Sinatra application code is copied at the Docker build time, therefore the resul
 git clone https://github.com/fforloff/docker-simple-sinatra-app.git
 cd docker-simple-sinatra-app
 docker-compose build --no-cache
-docker-compose run -d
+docker-compose up -d
 # to test
 curl localhost:8080
 ```
@@ -62,5 +64,6 @@ docker-compose scale appsrv=2
 ### Possible Future Improvements
 - Separate dockerfiles for the app and the web components - to allow for independent management of the NGINX version and Unicorn/Ruby version.
 - Copy nginx.conf.compose and unicorn.rb.compose at the build time for portability
+- Use HTTPS
 - Introduce service discovery / orchestration, i.e. with Hashicorp Consul or ETCD, Joyent ContainerPilot, Hashicorp consul-template. This will allow for the future production deployment across multiple network tiers.
 - Package static content (if any) with the NGINX image -  for improved performance.

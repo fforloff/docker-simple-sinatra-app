@@ -13,7 +13,6 @@ RUN apk update && \
     ln -sf /dev/stderr /var/lib/nginx/logs/error.log
 USER nginx
 WORKDIR /app
-ENV PORT 3000
 ENV GEM_HOME /app/.gem
 ENV PATH $PATH:/app/.gem/bin
 RUN bundle install --no-cache --without development test

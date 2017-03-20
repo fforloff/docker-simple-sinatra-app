@@ -4,7 +4,7 @@
 Why Docker?
 - To achieve a Development-Test-QA-Production parity. "Build once - run anywhere".
 - To allow for a predictable and repeatable deployment process of an application and its dependencies, plus easy rollbacks and possible blue/green deployments.
-- To promote/encorage/engforce good practice. I.e. with docker it is easy to standartise service discovery, logging, monitoring/alerting, security aspects.
+- To promote/encourage/enforce good practice. I.e. with docker it is easy to standartise service discovery, logging, monitoring/alerting, security aspects.
 - Speeds up development process - docker instances boot up/shut down in seconds.
 - Easy to achieve application scalability while maintaining cost effectiveness - allows for a denser deployment than the conventional VMs.
 

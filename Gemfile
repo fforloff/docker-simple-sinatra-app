@@ -1,3 +1,6 @@
 source 'http://rubygems.org'
 gem 'sinatra'
-gem 'unicorn'
+
+group :unicorn do
+  gem 'unicorn'
+end

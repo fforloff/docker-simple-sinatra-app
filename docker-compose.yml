@@ -1,0 +1,20 @@
+version: "2.1"
+services:
+  appsrv:
+    build:
+      dockerfile: Dockerfile.allinone
+      context: .
+    volumes:
+      - ./unicorn.rb.compose:/app/unicorn.rb
+    command: unicorn -c unicorn.rb
+  web:
+    build:
+      dockerfile: Dockerfile.allinone
+      context: .
+    volumes:
+      - ./nginx.conf.compose:/etc/nginx/nginx.conf
+    depends_on:
+      - appsrv
+    ports:
+      - 8080:8080
+    command: nginx -g 'daemon off;'

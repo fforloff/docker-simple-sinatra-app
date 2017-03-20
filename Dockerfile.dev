@@ -1,0 +1,11 @@
+FROM alpine
+
+RUN apk update && \
+    apk --no-cache add ruby==2.3.3-r0 \
+    build-base ruby-dev=2.3.3-r0 libc-dev linux-headers \
+    ruby-bundler=1.13.4-r0
+WORKDIR /app
+ENV PORT 3000
+ENV GEM_HOME /app/.gem
+ENV PATH $PATH:/app/.gem/bin
+CMD bundle install --without unicorn && ruby helloworld.rb

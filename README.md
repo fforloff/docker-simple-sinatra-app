@@ -2,12 +2,11 @@
 
 ### Docker Packaging
 Why Docker?
-- To achieve Development-Test-QA-Production parity. "Build once - run anywhere".
-- To allow for a predictable repeatable deployment of an application and its dependencies.
+- To achieve a Development-Test-QA-Production parity. "Build once - run anywhere".
+- To allow for a predictable and repeatable deployment process of an application and its dependencies, plus easy rollbacks and possible blue/green deployments.
 - To promote/encorage/engforce good practice. I.e. with docker it is easy to standartise service discovery, logging, monitoring/alerting, security aspects.
 - Speeds up development process - docker instances boot up/shut down in seconds.
 - Easy to achieve application scalability while maintaining cost effectiveness - allows for a denser deployment than the conventional VMs.
-- Fast deployment process; rollbacks; blue/green deployments.
 
 ### Development of the application with Docker
 
@@ -21,9 +20,9 @@ curl localhost:3000
 ```
 This setup is suitable for running on developers machines. The application directory is volume-mounted inside a docker instance. This allows to work on the code without rebuilding the image.
 
-NB:
-- Alpine Linux is used as a base image, with a minimal list of packages deployed. There are no docker security measures implemented in this option.
-- Gemfile.lock is currently in .gitignore.
+Alpine Linux is used as a base image, with a minimal list of packages deployed. There are no other docker security measures implemented in this option.
+
+Gemfile.lock is currently in .gitignore.
 
 ### All-in-one deployment with Docker
 

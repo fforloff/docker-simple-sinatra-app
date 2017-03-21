@@ -6,6 +6,8 @@ services:
       context: .
     volumes:
       - ./unicorn.rb.compose:/app/unicorn.rb
+    mem_limit: 100M
+    cpu_shares: 1000
     command: unicorn -c unicorn.rb
   web:
     build:
@@ -17,4 +19,6 @@ services:
       - appsrv
     ports:
       - 8080:8080
+    mem_limit: 50M
+    cpu_shares: 500
     command: nginx -g 'daemon off;'

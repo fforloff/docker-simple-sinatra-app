@@ -14,14 +14,14 @@ Why Docker?
 git clone https://github.com/fforloff/docker-simple-sinatra-app.git
 cd docker-simple-sinatra-app
 docker build -f Dockerfile.dev -t app_dev . --no-cache
-docker run -v $(pwd):/app -p 3000:3000 app_dev
+docker run -v $(pwd):/app -p 3000:3000 --cpus=0.3 --memory=100m app_dev
 # to test
 curl localhost:3000
 ```
 This setup is suitable for running on developers machines. The application directory is volume-mounted inside a docker instance. This allows to work on the code without rebuilding the image.
 
 Notes:
-- Alpine Linux is used as a base image, with a minimal list of packages deployed. There are no other docker security measures implemented in this option.
+- Alpine Linux is used as a base image, with a minimal list of packages deployed. There are no other docker security measures implemented in this option, apart from limiting CPU and memory resources at the run time.
 - Group 'unicorn' is added to the Gemfile - therefore the same Gemfile can be used for this example (with 'bundle install --without unicorn') and the one below.
 - Gemfile.lock is currently in .gitignore.
 
@@ -32,7 +32,7 @@ Notes:
 git clone https://github.com/fforloff/docker-simple-sinatra-app.git
 cd docker-simple-sinatra-app
 docker build -f Dockerfile.allinone -t app_allinone . --no-cache
-docker run -d -p 8080:8080 app_allinone
+docker run -d -p 8080:8080 --cpus=0.3 --memory=100m app_allinone
 # to test
 curl localhost:8080
 ```
